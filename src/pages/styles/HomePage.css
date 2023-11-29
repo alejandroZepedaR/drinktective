@@ -1,0 +1,33 @@
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.primary-button{
+    background-color: #FF312E;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+.secondary-button{
+    font-size: 1.5em;
+    background-color: #2E2E2E;
+}
+
+.image-div{
+    border-radius: 20px;
+}
+.landing-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+img{
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
