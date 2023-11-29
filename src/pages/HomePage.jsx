@@ -1,7 +1,19 @@
 import  './styles/HomePage.css';
 import Header from '../components/Header';
 import landing from '../assets/landingImage.jpg';
+import { useNavigate } from 'react-router-dom';
+
 export default function HomePage() {
+    const navigate = useNavigate();
+
+    function handleRandomSearch(){
+        fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+        .then(response => response.json())
+        .then(data => data.drinks[0].idDrink)
+        .then(id => navigate('/recipe/'+id))
+        .catch(err => console.log(err));
+    }
+
     return (
         <>
             <Header />
@@ -13,8 +25,8 @@ export default function HomePage() {
                     <div className='col-5 landing-info'>
                         <h3>Search for your favorite cocktail recipes </h3>
                         <div className='buttons'>
-                            <button className='primary-button col-5'>Search</button>
-                            <button className='secondary-button col-5'>Random Recipe</button>
+                            <a href='/search' className='btn btn-primary col-5'>Search</a>
+                            <button className='btn btn-secondary col-5' onClick={handleRandomSearch}>Random Recipe</button>
                         </div>
                     </div>
                 </main>

@@ -6,7 +6,7 @@ export default function Header() {
                 <nav className='col-3'>
                     <ul>
                         <li><a className="link" href="/">Home</a></li>
-                        <li><a className="link" href="">Saved</a></li>
+                        <li><a className="link" href="/saved">Saved</a></li>
                         <li><a className="link" href="/search">Search</a></li>
                     </ul>
                 </nav>

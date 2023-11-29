@@ -22,9 +22,9 @@ export default function DrinkCard({drink}) {
 
             // Save the updated list to local storage
             localStorage.setItem("savedDrinks", JSON.stringify(updatedSavedDrinks));
-            console.log("Drink saved!");
+            alert("Drink saved!");
         } else {
-            console.log("Drink already saved!");
+            alert("You already saved this drink!");
         }
 
         function logLocalStorageData() {
@@ -41,7 +41,13 @@ export default function DrinkCard({drink}) {
                 <h5 className="card-title">{drink.strDrink}</h5>
                 <div>
                     <a className="btn btn-primary" href={link} >Recipe</a>
-                    <button onClick={() => handleSave()} className="btn btn-secondary">Save</button>
+                    {
+                        savedDrinks.includes(drink.idDrink) ? (
+                            <button className="btn btn-secondary" disabled>Saved</button>
+                        ) : (
+                            <button onClick={() => handleSave()} className="btn btn-secondary">Save</button>
+                        )
+                    }
                 </div>
             </div>
         </div>
