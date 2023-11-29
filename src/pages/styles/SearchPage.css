@@ -1,0 +1,16 @@
+.searchBar{
+    background-color: #2E2E2E;
+    border: none;
+    border-radius: 15px;
+    padding: 5px;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+.results{
+    height: 75vh;
+    overflow-y: scroll;
+    border-radius: 20px;
+    background-color: #2E2E2E;
+}
+

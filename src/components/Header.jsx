@@ -7,7 +7,7 @@ export default function Header() {
                     <ul>
                         <li><a className="link" href="/">Home</a></li>
                         <li><a className="link" href="">Saved</a></li>
-                        <li><a className="link" href="">Search</a></li>
+                        <li><a className="link" href="/search">Search</a></li>
                     </ul>
                 </nav>
             </div>

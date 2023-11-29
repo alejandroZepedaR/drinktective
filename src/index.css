@@ -43,6 +43,12 @@ button{
   text-decoration: none;
   color: #fff;  
 }
+.btn-primary{
+  background-color: #FF312E;
+  border-color: #FF312E;
+}
+
+
 
 
 
