@@ -32,7 +32,9 @@ button{
 }
 
 .navbar ul{
-  align-content: center;
+  font-size: 1.5em;
+  align-items: center;
+  padding-top: 1em;
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -43,11 +45,22 @@ button{
   text-decoration: none;
   color: #fff;  
 }
+.link:hover{
+  color: #FF312E;
+}
 .btn-primary{
   background-color: #FF312E;
+  border-color: #dc3545;
+}
+
+.btn-primary:hover{
+  background-color: #dc3545;
   border-color: #FF312E;
 }
 
+.badge-container{
+  margin-bottom: 0.5em;
+}
 
 
 

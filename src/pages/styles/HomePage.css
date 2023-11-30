@@ -25,9 +25,18 @@
     justify-content: space-evenly;
 }
 img{
-    border-radius: 20px;
+    border-radius: 10px;
     width: 100%;
     height: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
+}
+
+.buttons a{
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.buttons button{
+    font-size: 1.5em;
 }

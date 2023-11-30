@@ -22,16 +22,15 @@ export default function HomePage() {
                     <div className='col-5 m-5 image-div'>
                         <img src={landing} alt="" />
                     </div>
-                    <div className='col-5 landing-info'>
-                        <h3>Search for your favorite cocktail recipes </h3>
+                    <div className='col-5 landing-info '>
+                        <h3 className='text-center'>Crack the Mystery of Your Perfect Drink</h3>
                         <div className='buttons'>
-                            <a href='/search' className='btn btn-primary col-5'>Search</a>
+                            <a href='/search' className='btn btn-danger col-5'>Start</a>
                             <button className='btn btn-secondary col-5' onClick={handleRandomSearch}>Random Recipe</button>
                         </div>
                     </div>
                 </main>
             </div> 
-        </>
-        
+        </>        
     )
 }

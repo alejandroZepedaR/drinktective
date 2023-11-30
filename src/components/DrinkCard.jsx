@@ -34,16 +34,23 @@ export default function DrinkCard({drink}) {
         logLocalStorageData();
     }
 
+    function handleDelete(){
+        console.log('Deleted!')
+    }
+
     return(
         <div className="card col-3 m-5 text-bg-dark ">
             <img className="card-img-top mt-3" src={drink.strDrinkThumb} alt={drink.strName} />
             <div className="card-body">
                 <h5 className="card-title">{drink.strDrink}</h5>
+                <div className="badge-container">
+                <span class="badge text-bg-light">{drink.strCategory}</span>
+                </div>
                 <div className="buttons-div">
                     <a className="btn btn-primary" href={link} >Recipe</a>
                     {
                         savedDrinks.includes(drink.idDrink) ? (
-                            <button className="btn btn-secondary" disabled>Saved</button>
+                            <button className="btn btn-warning" onClick={handleDelete}>Remove</button>
                         ) : (
                             <button onClick={() => handleSave()} className="btn btn-secondary">Save</button>
                         )

@@ -4,10 +4,10 @@ import './styles/SearchPage.css';
 import DrinkCard from "../components/DrinkCard";
 
 export default function SearchPage() {
-    const searchTypes = ['Cocktail', 'Ingredient'];
+    const searchTypes = ['Drink', 'Ingredient'];
 
-    const [searchTerm, setSearchTerm] = useState('margarita');
-    const [searchType, setSearchType] = useState('Cocktail');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchType, setSearchType] = useState('Drink');
 
     const [searchResults, setSearchResults] = useState([]);
 
@@ -27,7 +27,7 @@ export default function SearchPage() {
                 });
         }
 
-        if(searchType === 'Cocktail') {
+        if(searchType === 'Drink') {
             let url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`;
             handleSearch(url);
         }
