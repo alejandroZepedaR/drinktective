@@ -34,9 +34,16 @@ export default function DrinkCard({drink}) {
         logLocalStorageData();
     }
 
-    function handleDelete(){
-        console.log('Deleted!')
+    function handleDelete(id) {
+        // Filter out the drink ID from the savedDrinks array
+        const updatedSavedDrinks = savedDrinks.filter(savedDrinkId => savedDrinkId !== id);
+        setSavedDrinks(updatedSavedDrinks);
+    
+        // Update the saved drinks in local storage
+        localStorage.setItem("savedDrinks", JSON.stringify(updatedSavedDrinks));
+
     }
+    
 
     return(
         <div className="card col-3 m-5 text-bg-dark ">
@@ -44,13 +51,13 @@ export default function DrinkCard({drink}) {
             <div className="card-body">
                 <h5 className="card-title">{drink.strDrink}</h5>
                 <div className="badge-container">
-                <span class="badge text-bg-light">{drink.strCategory}</span>
+                <span className="badge text-bg-light">{drink.strCategory}</span>
                 </div>
                 <div className="buttons-div">
                     <a className="btn btn-primary" href={link} >Recipe</a>
                     {
                         savedDrinks.includes(drink.idDrink) ? (
-                            <button className="btn btn-warning" onClick={handleDelete}>Remove</button>
+                            <button className="btn btn-warning" onClick={() => handleDelete(drink.idDrink)}>Remove</button>
                         ) : (
                             <button onClick={() => handleSave()} className="btn btn-secondary">Save</button>
                         )
