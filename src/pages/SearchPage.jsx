@@ -49,9 +49,9 @@ export default function SearchPage() {
         <>
             <Header />
             <div className="container">
-                <div className="row mt-4">
-                    <input type="text" className='col-8 searchBar' onChange={handleSearch} value={searchTerm}/>
-                    <select className="col-3 " name="searchTypeSelect" id="searchTypeSelect" onChange={(e)=>setSearchType(e.target.value) } value={searchType}>
+                <div className="row mt-4 search-container">
+                    <input type="text" placeholder="Search:" className='col-8 searchBar' onChange={handleSearch} value={searchTerm}/>
+                    <select className="col-2" name="searchTypeSelect" id="searchTypeSelect" onChange={(e)=>setSearchType(e.target.value) } value={searchType}>
                         {searchTypes.map((type, index) => {
                             return <option key={index} value={type}>{type}</option>
                         })}
