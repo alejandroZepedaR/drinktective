@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 
-export default function DrinkCard({drink}) {
+export default function DrinkCard({drink, removeFromSaved}) {
     const link = '/recipe/'+drink.idDrink;
     const [savedDrinks, setSavedDrinks] = useState([]);
 
@@ -14,34 +14,33 @@ export default function DrinkCard({drink}) {
     }, []);
 
     function handleSave() {
-        // Check if the drink is already saved
-        if (!savedDrinks.includes(drink.idDrink)) {
-            // Add the drink ID to the savedDrinks list
-            const updatedSavedDrinks = [...savedDrinks, drink.idDrink];
+        const savedDrinksFromStorage = localStorage.getItem("savedDrinks");
+        let updatedSavedDrinks = [];
+    
+        if (savedDrinksFromStorage) {
+            updatedSavedDrinks = JSON.parse(savedDrinksFromStorage);
+        }
+    
+        if (!updatedSavedDrinks.includes(drink.idDrink)) {
+            updatedSavedDrinks.push(drink.idDrink);
             setSavedDrinks(updatedSavedDrinks);
-
-            // Save the updated list to local storage
             localStorage.setItem("savedDrinks", JSON.stringify(updatedSavedDrinks));
             alert("Drink saved!");
         } else {
             alert("You already saved this drink!");
         }
-
-        function logLocalStorageData() {
-            const localStorageData = { ...localStorage };
-            console.log("Data in Local Storage:", localStorageData);
-        }
-        logLocalStorageData();
     }
+    
 
     function handleDelete(id) {
-        // Filter out the drink ID from the savedDrinks array
         const updatedSavedDrinks = savedDrinks.filter(savedDrinkId => savedDrinkId !== id);
         setSavedDrinks(updatedSavedDrinks);
     
         // Update the saved drinks in local storage
         localStorage.setItem("savedDrinks", JSON.stringify(updatedSavedDrinks));
 
+        // Call the parent component's function to remove the card from the saved recipes
+        removeFromSaved(id);
     }
     
 

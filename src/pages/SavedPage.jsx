@@ -30,6 +30,12 @@ export default function SavedPage() {
         }
     }, []);
 
+    const removeFromSaved = (id) => {
+        // Filter out the drink with the given id from savedRecipes
+        const updatedSavedRecipes = savedRecipes.filter(recipe => recipe.idDrink !== id);
+        setSavedRecipes(updatedSavedRecipes);
+    };
+
     return (
         <>
             <Header />
@@ -38,7 +44,7 @@ export default function SavedPage() {
                     <h2 className="text-center">Saved Recipes</h2>
                     {savedRecipes.length > 0 ? (
                         savedRecipes.map((recipe, index) => (
-                            <DrinkCard drink={recipe} key={index} />
+                            <DrinkCard drink={recipe} key={index} removeFromSaved={removeFromSaved} />
                         ))
                     ) : (
                         <p className="text-center">No saved recipes</p>
