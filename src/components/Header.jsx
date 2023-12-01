@@ -2,8 +2,10 @@ export default function Header() {
     return (
         <header className='navbar'>
             <div className='container'>
-                <h1>Drinktective</h1>
-                <nav className='col-3'>
+                <div className="col-12 col-md-5">
+                    <h1 className="text-center">Drinktective</h1>
+                </div>
+                <nav className='col-12 col-md-5'>
                     <ul>
                         <li><a className="link" href="/">Home</a></li>
                         <li><a className="link" href="/saved">Saved</a></li>

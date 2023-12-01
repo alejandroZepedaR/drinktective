@@ -19,10 +19,10 @@ export default function HomePage() {
             <Header />
             <div className='container'>
                 <main style={{marginTop: '40px'}} className='row landing'>
-                    <div className='col-5 m-5 image-div'>
+                    <div className='col-md-5 m-3 image-div'>
                         <img src={landing} alt="" />
                     </div>
-                    <div className='col-5 landing-info '>
+                    <div className='col-md-5 landing-info '>
                         <h2 className='text-center'>Crack the Mystery of Your Perfect Drink</h2>
                         <div className='buttons'>
                             <a href='/search' className='btn btn-danger col-5'>Start</a>

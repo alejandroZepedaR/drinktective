@@ -45,7 +45,7 @@ export default function DrinkCard({drink, removeFromSaved}) {
     
 
     return(
-        <div className="card col-3 m-5 text-bg-dark ">
+        <div className="card col-10 col-md-4 col-lg-3 m-5 text-bg-dark ">
             <img className="card-img-top mt-3" src={drink.strDrinkThumb} alt={drink.strName} />
             <div className="card-body">
                 <h5 className="card-title">{drink.strDrink}</h5>
