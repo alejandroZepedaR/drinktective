@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
     const navigate = useNavigate();
+    
 
     function handleRandomSearch(){
         fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')

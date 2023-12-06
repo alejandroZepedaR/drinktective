@@ -1,11 +1,21 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function RecipePage(){
     const {id} = useParams();
     const [recipe, setRecipe] = useState({});
     const [ingredients, setIngredients] = useState([]);
+    const navigate = useNavigate();
+
+    function handleRandomSearch(){
+        fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+        .then(response => response.json())
+        .then(data => data.drinks[0].idDrink)
+        .then(id => navigate('/recipe/'+id))
+        .catch(err => console.log(err));
+    }
 
     useEffect(() => {
         function getData(){
@@ -35,7 +45,7 @@ export default function RecipePage(){
 
         getData();
 
-    },[]);
+    },[id]);
 
     return(
         <>
@@ -55,6 +65,9 @@ export default function RecipePage(){
                                 return <li key={index}>{ingredient.measure} {ingredient.ingredient}</li>
                             })}
                         </ul>
+                        <div className="col-12 d-flex justify-content-center">
+                            <button className='btn btn-secondary col-3' onClick={() => handleRandomSearch()}>Random Recipe</button>
+                        </div>
                     </div>
                 </main>
             </div>
