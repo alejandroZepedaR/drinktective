@@ -7,6 +7,7 @@ export default function RecipePage(){
     const {id} = useParams();
     const [recipe, setRecipe] = useState({});
     const [ingredients, setIngredients] = useState([]);
+    const [savedDrink, setSavedDrink] = useState(false);
     const navigate = useNavigate();
 
     function handleRandomSearch(){
@@ -47,15 +48,33 @@ export default function RecipePage(){
 
     },[id]);
 
+    function handleSave() {
+        const savedDrinksFromStorage = localStorage.getItem("savedDrinks");
+        let updatedSavedDrinks = [];
+    
+        if (savedDrinksFromStorage) {
+            updatedSavedDrinks = JSON.parse(savedDrinksFromStorage);
+        }
+    
+        if (!updatedSavedDrinks.includes(id)) {
+            updatedSavedDrinks.push(id);
+            localStorage.setItem("savedDrinks", JSON.stringify(updatedSavedDrinks));
+            alert("Drink saved!");
+        } else {
+            alert("You already saved this drink!");
+            setSavedDrink(true);
+        }
+    }
+
     return(
         <>
             <Header />
             <div className="container">
                 <main className="row mt-5">
-                    <div className="col-5">
+                    <div className="col-md-5">
                         <img  src={recipe.strDrinkThumb} alt={recipe.strDrink} />
                     </div>
-                    <div className="drink-info col-7">
+                    <div className="drink-info col-md-7">
                         <h2 className="text-center">{recipe.strDrink}</h2>
                         <h3>Instructions</h3>
                         <p>{recipe.strInstructions}</p>
@@ -65,8 +84,13 @@ export default function RecipePage(){
                                 return <li key={index}>{ingredient.measure} {ingredient.ingredient}</li>
                             })}
                         </ul>
-                        <div className="col-12 d-flex justify-content-center">
-                            <button className='btn btn-secondary col-3' onClick={() => handleRandomSearch()}>Random Recipe</button>
+                        <div className="col-12 mb-2 d-flex justify-content-center">
+                        {savedDrink ? ( <button className='btn btn-primary col-4' disabled onClick={() => handleSave()}>Saved</button>) : ( <button className='btn btn-primary col-4' onClick={() => handleSave()}>Save</button>)}
+                           
+                        </div>
+                        <div className="col-12 mb-5 d-flex justify-content-center">
+                            
+                            <button className='btn btn-secondary col-4' onClick={() => handleRandomSearch()}>Random Recipe</button>
                         </div>
                     </div>
                 </main>

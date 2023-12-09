@@ -19,8 +19,8 @@ export default function HomePage() {
         <>
             <Header />
             <div className='container'>
-                <main style={{marginTop: '40px'}} className='row landing'>
-                    <div className='col-md-5 m-3 image-div'>
+                <main style={{marginTop: '40px'}} className='row landing justify-content-center'>
+                    <div className='col-md-5 m-md-3 image-div'>
                         <img src={landing} alt="" />
                     </div>
                     <div className='col-md-5 landing-info '>
